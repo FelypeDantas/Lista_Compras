@@ -63,7 +63,7 @@ function mostrarItem() {
                     <span class="${elemento.checar ? 'itens-comprados' : ''} is-size-5">${elemento.valor} (${elemento.setor})</span>
                 </div>
                 <div>
-                    ${index === Number(itemAEditar) ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>' : '<i class="fa-regular is-clickable fa-pen-to-square editar"></i>'}
+                    ${index === Number(itemAEditar) ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>' : '<i class="fa-regular is-clickable fa-pen-to-square editar" onclick="editarItem(${index})"></i>'}
                     <i class="fa-solid fa-trash is-clickable deletar"></i>
                 </div>
             </li>
