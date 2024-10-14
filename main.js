@@ -108,9 +108,13 @@ function mostrarItem() {
     atualizaLocalStorage();
 }
 
+function editarItem(index) {
+    itemAEditar = index;
+    mostrarItem();
+}
+
 function salvarEdicao() {
-    const itemEditado = document.querySelector(`[data-value="${itemAEditar}"] input[type="text"]`)
-    //console.log(itemEditado.value);
+    const itemEditado = document.querySelector(`[data-value="${itemAEditar}"] input[type="text"]`);
     listaDeCompras[itemAEditar].valor = itemEditado.value;
     itemAEditar = -1;
     mostrarItem();
