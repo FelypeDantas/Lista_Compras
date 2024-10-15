@@ -46,7 +46,7 @@ function salvarItem() {
         });
 
         itensInput.value = '';
-        document.getElementById("setor-item").value = ''; // Limpa o campo do setor
+        document.getElementById("setor-item").value = '';
     }
 }
 
@@ -57,13 +57,19 @@ function mostrarItem() {
 
     listaDeCompras.forEach((elemento, index) => {
         const itemHTML = `
-            <li class="item-compra is-flex is-justify-content-space-between" data-value="${index}">
+           <li class="item-compra is-flex is-justify-content-space-between" data-value="${index}">
                 <div>
                     <input type="checkbox" ${elemento.checar ? 'checked' : ''} class="is-clickable" />
-                    <span class="${elemento.checar ? 'itens-comprados' : ''} is-size-5">${elemento.valor} (${elemento.setor})</span>
+                     ${index === Number(itemAEditar)
+                    ? `<input type="text" value="${elemento.valor}" class="input-edicao" />`
+                    : `<span class="${elemento.checar ? 'itens-comprados' : ''} is-size-5">${elemento.valor} (${elemento.setor})</span>`
+                    }
                 </div>
                 <div>
-                    ${index === Number(itemAEditar) ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>' : '<button onclick="editarItem(${index})"><i class="fa-regular is-clickable fa-pen-to-square editar"></i></button>'}
+                    ${index === Number(itemAEditar)
+                    ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>'
+                    : '<i class="fa-regular is-clickable fa-pen-to-square editar"></i>'
+                    }
                     <i class="fa-solid fa-trash is-clickable deletar"></i>
                 </div>
             </li>
@@ -115,7 +121,9 @@ function editarItem(index) {
 
 function salvarEdicao() {
     const itemEditado = document.querySelector(`[data-value="${itemAEditar}"] input[type="text"]`);
-    listaDeCompras[itemAEditar].valor = itemEditado.value;
+    if (itemEditado) {
+        listaDeCompras[itemAEditar].valor = itemEditado.value;
+    }
     itemAEditar = -1;
     mostrarItem();
 }
