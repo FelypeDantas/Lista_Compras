@@ -1,53 +1,44 @@
-# Projeto Lista de Compras - Utilizado no Curso Objetos no JavaScript - Escola Front-End Alura
+<h1 align="center">📌 Lista de compras </h1>
 
-Neste arquivo encontram-se modelos de códigos que serão utilizados no decorrer do curso. 
+<p align="center">
+  Salve a sua lista de compras <br/>
+  Aqui podemos salvar, excluir, e atualizar as suas compras de mercado, na rede? não, salva apenas no seu dispositivo. 
+</p>
 
-Código modelo da li "Comprados":
+<p align="center">
+  <img src="https://img.shields.io/badge/status-concluído-green"/>
+  <img src="https://img.shields.io/badge/license-MIT-blue"/>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
+</p>
 
-    <li class="item-compra is-flex is-justify-content-space-between" data-value="">
-        <div>
-            <input type="checkbox" checked class="is-clickable" />  
-            <span class="itens-comprados is-size-5"></span>
-        </div>
-        <div>
-            <i class="fa-solid fa-trash is-clickable deletar"></i>
-        </div>
-    </li>
+---
 
-Código modelo da li "Lista de compras": 
+## 🧠 Sobre o Projeto
 
-    <li class="item-compra is-flex is-justify-content-space-between" data-value="">
-        <div>
-            <input type="checkbox" class="is-clickable" />
-            <input type="text" class="is-size-5" value=""></input>
-        </div>
-        <div>
-            <i class="fa-solid fa-trash is-clickable deletar"></i>
-        </div>
-    </li>
+- Projeto para lista de compras no mercado.
+- Para que o usuário se organizar sobre as suas compras para o mês.
+- O projeto é interessante para aqueles que buscam uma lista de compras com pressa mas não quer um novo aplicativo e não tem um papel para colocar.
 
-Input com código refatorado:
+---
 
-    <div>
-        <input type="checkbox" checked class="is-clickable" />  
-        <span class="itens-comprados is-size-5">${elemento.valor}</span>
-    </div>
+## 🚀 Tecnologias Utilizadas
 
-Ícones de edição:
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
-    <i class="fa-regular fa-floppy-disk is-clickable"></i><i class="fa-regular is-clickable fa-pen-to-square editar"></i>
+- ✅ [HTML](#)
+- ✅ [CSS](#)
+- ✅ [JavaScript](#)
+---
 
-## Autor
-<div align="center">
-<a href="https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-<img style="border-radius: 50%;" src="https://github.com/FelypeDantas.png" width="100px;" alt="foto do autor"/>
- <br/>
- <sub><b>Felype Dantas Dos Santos</b></sub></a> <a href="https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="Linkedin"> </a>
+## 📦 Como usar
 
+Acesse o link para ver o projeto: <a href="https://felypedantas.github.io/Lista_Compras/"> Lista de compras </a>
 
-Feito por Felype Dantas Dos Santos 👨🏻‍💻 Entre em contato!
-
-[![Linkedin Badge](https://img.shields.io/badge/Felype-0A66C2.svg?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
-[![Whatszap Badge](https://img.shields.io/badge/Felype-25D366.svg?style=for-the-badge&logo=WhatsApp&logoColor=white)](https://wa.me/qr/EOCNNKM4XUHDM1)
-
+<h2 align="center">Autor</h2>
+<div align="center"> 
+  <a href="https://www.linkedin.com/in/felype-dantas-dos-santos-94497b193?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"> 
+    <img style="border-radius: 50%;" src="https://github.com/FelypeDantas.png" width="100px;" alt="Foto do autor"/> <br/> 
+    <sub><b>Felype Dantas Dos Santos</b></sub> </a> <br/>
+    <p>Feito com 💻 por Felype Dantas Dos Santos — entre em contato!</p> 
 </div>
+
