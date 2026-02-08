@@ -157,3 +157,28 @@ window.addEventListener("load", () => {
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
+
+function solicitarNotificacao() {
+    if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+}
+
+function notificarItensPendentes() {
+    const pendentes = listaDeCompras.filter(i => !i.checar);
+
+    if (pendentes.length > 0 && Notification.permission === "granted") {
+        new Notification("🛒 Lista de compras", {
+            body: `Você ainda tem ${pendentes.length} item(ns) para comprar.`,
+            icon: "assets/OIP.jpg"
+        });
+    }
+}
+
+window.addEventListener("load", () => {
+    solicitarNotificacao();
+
+    setTimeout(() => {
+        notificarItensPendentes();
+    }, 1000 * 60 * 30); // 30 minutos
+});
