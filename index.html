@@ -14,38 +14,57 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
-<body class="has-text-grey hero">
+<body class="has-text-grey hero is-fullheight">
 
-    <main class="column is-7 hero-body is-offset-one-fifth is-unselectable">
+    <main class="hero-body is-unselectable">
+        <div class="container is-flex is-justify-content-center is-align-items-center">
+            <div class="column is-7">
 
-        <form id="form-itens" class="has-text-centered"> 
-            <select id="setor-item" class="select has-text-centered">
-                <option value="">Selecione um setor</option>
-                <option value="Alimentos">Alimentos</option>
-                <option value="Limpeza">Limpeza</option>
-                <option value="Bebidas">Bebidas</option>
-            </select>
-            <input type="text" class="input has-text-centered" required placeholder="Digite o item que deseja adicionar" id="receber-item">
-            <button for="salvar" type="submit" class="mt-2 has-text-weight-bold button is-small is-primary">Salvar item</button>
-        </form>
+                <div class="top-buttons">
+                    <button id="toggle-dark" class="button is-small is-dark">
+                        🌙 Modo escuro
+                    </button>
 
-        <div class="has-background-white mt-4" >
-            <div>
-                <h2 class="has-text-link has-text-weight-bold is-size-4 ml-2">Lista de compras</h1>
-                    <ul class="mx-2 borda-lista" id="lista-de-itens">
-                    </ul>
+                    <button id="exportar-pdf" class="button is-link is-small">
+                        💾 Exportar PDF
+                    </button>
+                </div>
+
+
+                <form id="form-itens" class="has-text-centered">
+                    <select id="setor-item" class="select has-text-centered">
+                        <option value="">Selecione um setor</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Limpeza">Limpeza</option>
+                        <option value="Bebidas">Bebidas</option>
+                    </select>
+                    <input type="text" class="input has-text-centered" required
+                        placeholder="Digite o item que deseja adicionar" id="receber-item">
+                    <button for="salvar" type="submit"
+                        class="mt-2 has-text-weight-bold button is-small is-primary">Salvar
+                        item</button>
+                </form>
+
+                <div class="has-background-white mt-4">
+                    <div>
+                        <h2 class="has-text-link has-text-weight-bold is-size-4 ml-2">Lista de compras</h1>
+                            <ul class="mx-2 borda-lista" id="lista-de-itens">
+                            </ul>
+                    </div>
+
+                    <section class="pb-2">
+                        <h2 class="has-text-link has-text-weight-bold is-size-4 ml-2">Comprados</h1>
+                            <ul class="mx-2 borda-lista" id="itens-comprados">
+                            </ul>
+                    </section>
+
+                </div>
+                <footer class="has-text-centered has-text-white has-text-weight-bold">Desenvolvido por Felype.</footer>
             </div>
-
-            <section class="pb-2">
-                <h2 class="has-text-link has-text-weight-bold is-size-4 ml-2">Comprados</h1>
-                    <ul class="mx-2 borda-lista" id="itens-comprados">
-                    </ul>
-            </section>
-
         </div>
-        <footer class="has-text-centered has-text-white has-text-weight-bold">Desenvolvido por Felype.</footer>
     </main>
 
     <script src="./main.js"></script>

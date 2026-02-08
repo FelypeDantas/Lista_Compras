@@ -1,41 +1,253 @@
+/* ===== Fundo ===== */
 html {
-    background: linear-gradient(177.52deg, #4574E3 2.11%, #128068 81.34%);
-    background-repeat: no-repeat;
-    height: 100%;
+    background: linear-gradient(135deg, #4f46e5, #059669);
+    min-height: 100%;
 }
 
 body {
-    font-family: 'Montserrat', 'sans-serif', 'Mansalva', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
 
-h2, footer {
+/* ===== Card principal ===== */
+.hero-body {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Títulos ===== */
+h2 {
+    font-family: 'Mansalva';
+    letter-spacing: 1px;
+}
+
+/* ===== Formulário ===== */
+#form-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+input,
+select {
+    border-radius: 12px;
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* ===== Botão ===== */
+button {
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Lista ===== */
+.borda-lista {
+    border: none;
+    margin-top: 0.5rem;
+}
+
+/* ===== Item ===== */
+.item-compra {
+    background: #f9fafb;
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item-compra:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Texto ===== */
+.item-compra span {
+    margin-left: 0.5rem;
+}
+
+/* ===== Botões no topo ===== */
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+
+/* ===== Comprados ===== */
+.itens-comprados {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* ===== Setor (badge) ===== */
+.badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+}
+
+.badge.Alimentos {
+    background: #fde68a;
+    color: #92400e;
+}
+
+.badge.Limpeza {
+    background: #bfdbfe;
+    color: #1e3a8a;
+}
+
+.badge.Bebidas {
+    background: #bbf7d0;
+    color: #065f46;
+}
+
+/* ===== Ícones ===== */
+i {
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+i:hover {
+    color: #4f46e5;
+    transform: scale(1.2);
+}
+
+/* ===== Efeito de foco nos inputs ===== */
+
+input:focus {
+    transform: scale(1.03);
+    transition: 0.2s ease;
+}
+
+/* ===== Efeito de vidro fosco ===== */
+.hero-body {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 22px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+
+/* ===== Footer ===== */
+footer {
+    margin-top: 1rem;
     font-family: 'Mansalva';
 }
 
-button {
-    border: none;
+
+/* ===== Animação ===== */
+@keyframes slideFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.itens-comprados {
-text-decoration: line-through;
+.item-compra {
+    animation: slideFade 0.35s ease forwards;
 }
 
-.borda-lista {
-    border-bottom: dotted 2px blue;
+@keyframes appEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
-input:disabled #setor-item{
-    border: none;
-    background: none;
-    color: black;
+.hero-body {
+    animation: appEnter 0.6s ease forwards;
 }
 
-input, #setor-item {
-    border: none;
-    background: none;
-    color: black;
+
+/* ===== Modo Escuro ===== */
+
+body.dark {
+    background: linear-gradient(135deg, #020617, #020617);
 }
 
-#setor-item {
-    margin-bottom: 1rem;
+body.dark .hero-body {
+    background: rgba(17, 24, 39, 0.95);
+    color: #e5e7eb;
+}
+
+body.dark input,
+body.dark select {
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid #374151;
+}
+
+body.dark .item-compra {
+    background: #020617;
+}
+
+body.dark .button.is-link {
+    background-color: #2563eb;
+}
+
+body.dark .button.is-dark {
+    background-color: #111827;
+    color: white;
+}
+
+body.dark .hero-body {
+    background: rgba(17, 24, 39, 0.85);
+}
+
+
+/* ===== Responsividade ===== */
+
+@media (max-width: 768px) {
+    .hero-body {
+        padding: 1.2rem;
+        border-radius: 14px;
+    }
+
+    .item-compra {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .top-buttons button {
+        width: 100%;
+    }
 }

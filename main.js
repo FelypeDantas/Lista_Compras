@@ -61,15 +61,19 @@ function mostrarItem() {
                 <div>
                     <input type="checkbox" ${elemento.checar ? 'checked' : ''} class="is-clickable" />
                      ${index === Number(itemAEditar)
-                    ? `<input type="text" value="${elemento.valor}" class="input-edicao" />`
-                    : `<span class="${elemento.checar ? 'itens-comprados' : ''} is-size-5">${elemento.valor} (${elemento.setor})</span>`
-                    }
+                ? `<input type="text" value="${elemento.valor}" class="input-edicao" />`
+                : `<span class="${elemento.checar ? 'itens-comprados' : ''} is-size-5">
+    ${elemento.valor}
+    <span class="badge ${elemento.setor}">${elemento.setor}</span>
+</span>
+`
+            }
                 </div>
                 <div>
                     ${index === Number(itemAEditar)
-                    ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>'
-                    : '<i class="fa-regular is-clickable fa-pen-to-square editar"></i>'
-                    }
+                ? '<button onclick="salvarEdicao()"><i class="fa-regular fa-floppy-disk is-clickable"></i></button>'
+                : '<i class="fa-regular is-clickable fa-pen-to-square editar"></i>'
+            }
                     <i class="fa-solid fa-trash is-clickable deletar"></i>
                 </div>
             </li>
@@ -127,3 +131,25 @@ function salvarEdicao() {
     itemAEditar = -1;
     mostrarItem();
 }
+
+const toggleDark = document.getElementById("toggle-dark");
+
+toggleDark.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("modoEscuro", document.body.classList.contains("dark"));
+});
+
+if (localStorage.getItem("modoEscuro") === "true") {
+    document.body.classList.add("dark");
+}
+
+document.getElementById("exportar-pdf").addEventListener("click", () => {
+    const elemento = document.querySelector(".hero-body");
+    html2pdf().from(elemento).save("lista-de-compras.pdf");
+});
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        itensInput.focus();
+    }, 400);
+});
