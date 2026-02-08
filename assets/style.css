@@ -152,6 +152,18 @@ body.mercado .item-compra {
     padding: 1.2rem;
 }
 
+/* ===== Impressão ===== */
+@media print {
+    body {
+        background: white;
+    }
+
+    .item-compra {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
 
 /* ===== Efeito de vidro fosco ===== */
 .hero-body {
