@@ -32,7 +32,7 @@ h2 {
 input,
 select {
     border-radius: 12px;
-    padding: 0.6rem;
+    padding: 0.4rem;
     border: 1px solid #d1d5db;
     transition: 0.3s;
 }

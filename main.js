@@ -153,3 +153,7 @@ window.addEventListener("load", () => {
         itensInput.focus();
     }, 400);
 });
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+}
