@@ -166,7 +166,6 @@ document.getElementById("exportar-pdf").addEventListener("click", async () => {
     document.body.classList.remove("exportando");
 });
 
-
 window.addEventListener("load", () => {
     setTimeout(() => {
         itensInput.focus();
