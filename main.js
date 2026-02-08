@@ -144,9 +144,26 @@ if (localStorage.getItem("modoEscuro") === "true") {
 }
 
 document.getElementById("exportar-pdf").addEventListener("click", () => {
-    const elemento = document.querySelector(".hero-body");
-    html2pdf().from(elemento).save("lista-de-compras.pdf");
+    const clone = document.querySelector(".hero-body").cloneNode(true);
+
+    const header = document.createElement("div");
+    header.innerHTML = `
+        <div style="text-align:center; margin-bottom:20px;">
+            <img src="assets/OIP.jpg" style="width:80px;"><br>
+            <strong>Lista de Compras</strong><br>
+            <small>${new Date().toLocaleDateString()}</small>
+        </div>
+    `;
+
+    clone.prepend(header);
+
+    html2pdf().from(clone).set({
+        margin: 10,
+        filename: "lista-de-compras.pdf",
+        html2canvas: { scale: 2 }
+    }).save();
 });
+
 
 window.addEventListener("load", () => {
     setTimeout(() => {
@@ -181,4 +198,8 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         notificarItensPendentes();
     }, 1000 * 60 * 30); // 30 minutos
+});
+
+document.getElementById("modo-mercado").addEventListener("click", () => {
+    document.body.classList.toggle("mercado");
 });

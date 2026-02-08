@@ -139,6 +139,20 @@ input:focus {
     transition: 0.2s ease;
 }
 
+/* ===== Modo Mercado ===== */
+body.mercado .hero-body {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    border-radius: 0;
+}
+
+body.mercado .item-compra {
+    font-size: 1.3rem;
+    padding: 1.2rem;
+}
+
+
 /* ===== Efeito de vidro fosco ===== */
 .hero-body {
     background: rgba(255, 255, 255, 0.75);
