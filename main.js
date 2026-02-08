@@ -144,7 +144,7 @@ if (localStorage.getItem("modoEscuro") === "true") {
 }
 
 document.getElementById("exportar-pdf").addEventListener("click", () => {
-    const areaPDF = document.getElementById("lista-de-itens");
+    const areaPDF = document.getElementById("area-pdf");
 
     const header = document.createElement("div");
     header.style.textAlign = "center";
