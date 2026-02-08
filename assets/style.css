@@ -1,4 +1,6 @@
-/* ===== Fundo ===== */
+/* =========================================================
+   BASE
+========================================================= */
 html {
     background: linear-gradient(135deg, #4f46e5, #059669);
     min-height: 100%;
@@ -8,21 +10,32 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ===== Card principal ===== */
+/* =========================================================
+   HERO / CARD PRINCIPAL (UNIFICADO)
+========================================================= */
 .hero-body {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 22px;
     padding: 2rem;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    animation: appEnter 0.6s ease forwards;
 }
 
-/* ===== Títulos ===== */
+/* =========================================================
+   TÍTULOS
+========================================================= */
 h2 {
     font-family: 'Mansalva';
     letter-spacing: 1px;
 }
 
-/* ===== Formulário ===== */
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
 #form-itens {
     display: flex;
     flex-direction: column;
@@ -42,9 +55,12 @@ select:focus {
     outline: none;
     border-color: #4f46e5;
     box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    transform: scale(1.03);
 }
 
-/* ===== Botão ===== */
+/* =========================================================
+   BOTÕES
+========================================================= */
 button {
     border-radius: 12px;
     transition: 0.3s;
@@ -54,34 +70,9 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* ===== Lista ===== */
-.borda-lista {
-    border: none;
-    margin-top: 0.5rem;
-}
-
-/* ===== Item ===== */
-.item-compra {
-    background: #f9fafb;
-    border-radius: 14px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    align-items: center;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.item-compra:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== Texto ===== */
-.item-compra span {
-    margin-left: 0.5rem;
-}
-
-/* ===== Botões no topo ===== */
+/* =========================================================
+   BOTÕES DO TOPO
+========================================================= */
 .top-buttons {
     display: flex;
     justify-content: center;
@@ -90,14 +81,48 @@ button:hover {
     flex-wrap: wrap;
 }
 
+/* =========================================================
+   LISTA
+========================================================= */
+.borda-lista {
+    border: none;
+    margin-top: 0.5rem;
+}
 
-/* ===== Comprados ===== */
+/* =========================================================
+   ITEM DE COMPRA (UNIFICADO)
+========================================================= */
+.item-compra {
+    background: #f9fafb;
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    animation: slideFade 0.35s ease forwards;
+}
+
+.item-compra:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.item-compra span {
+    margin-left: 0.5rem;
+}
+
+/* =========================================================
+   COMPRADOS
+========================================================= */
 .itens-comprados {
     text-decoration: line-through;
     color: #9ca3af;
 }
 
-/* ===== Setor (badge) ===== */
+/* =========================================================
+   BADGES DE SETOR
+========================================================= */
 .badge {
     padding: 0.2rem 0.6rem;
     border-radius: 999px;
@@ -121,7 +146,9 @@ button:hover {
     color: #065f46;
 }
 
-/* ===== Ícones ===== */
+/* =========================================================
+   ÍCONES
+========================================================= */
 i {
     margin-left: 0.5rem;
     transition: 0.3s;
@@ -132,14 +159,9 @@ i:hover {
     transform: scale(1.2);
 }
 
-/* ===== Efeito de foco nos inputs ===== */
-
-input:focus {
-    transform: scale(1.03);
-    transition: 0.2s ease;
-}
-
-/* ===== Modo Mercado ===== */
+/* =========================================================
+   MODO MERCADO
+========================================================= */
 body.mercado .hero-body {
     width: 100%;
     max-width: 100%;
@@ -152,116 +174,15 @@ body.mercado .item-compra {
     padding: 1.2rem;
 }
 
-/* ===== ESTILO EXCLUSIVO PARA PDF ===== */
-/* ===== BLINDAGEM TOTAL PARA PDF ===== */
-body.exportando {
-    background: white !important;
-}
-
-body.exportando .pdf-wrapper {
-    background: white !important;
-    padding: 0 !important;
-}
-
-body.exportando .hero-body,
-body.exportando .container,
-body.exportando .column {
-    background: white !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-}
-
-body.exportando #area-pdf {
-    background: white !important;
-    padding: 0 !important;
-}
-
-body.exportando .item-compra {
-    background: white !important;
-    border: 1px solid #ccc;
-    box-shadow: none !important;
-}
-
-body.exportando .no-pdf {
-    display: none !important;
-}
-
-body.exportando * {
-    color: black !important;
-}
-
-/* ===== Impressão ===== */
-@media print {
-    body {
-        background: white;
-    }
-
-    .item-compra {
-        box-shadow: none;
-        border: 1px solid #ddd;
-    }
-}
-
-
-/* ===== Efeito de vidro fosco ===== */
-.hero-body {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 22px;
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, 0.25),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4);
-}
-
-
-/* ===== Footer ===== */
-footer {
-    margin-top: 1rem;
-    font-family: 'Mansalva';
-}
-
-
-/* ===== Animação ===== */
-@keyframes slideFade {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.item-compra {
-    animation: slideFade 0.35s ease forwards;
-}
-
-@keyframes appEnter {
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.hero-body {
-    animation: appEnter 0.6s ease forwards;
-}
-
-
-/* ===== Modo Escuro ===== */
-
+/* =========================================================
+   MODO ESCURO
+========================================================= */
 body.dark {
     background: linear-gradient(135deg, #020617, #020617);
 }
 
 body.dark .hero-body {
-    background: rgba(17, 24, 39, 0.95);
+    background: rgba(17, 24, 39, 0.85);
     color: #e5e7eb;
 }
 
@@ -285,13 +206,89 @@ body.dark .button.is-dark {
     color: white;
 }
 
-body.dark .hero-body {
-    background: rgba(17, 24, 39, 0.85);
+/* =========================================================
+   PDF – BLINDAGEM TOTAL
+========================================================= */
+body.exportando {
+    background: white !important;
 }
 
+body.exportando .hero-body,
+body.exportando .container,
+body.exportando .column,
+body.exportando .pdf-wrapper {
+    background: white !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
 
-/* ===== Responsividade ===== */
+body.exportando #area-pdf {
+    background: white !important;
+    padding: 0 !important;
+}
 
+body.exportando .item-compra {
+    background: white !important;
+    border: 1px solid #ccc;
+    box-shadow: none !important;
+}
+
+body.exportando .no-pdf {
+    display: none !important;
+}
+
+body.exportando li,
+body.exportando span,
+body.exportando h1,
+body.exportando h2,
+body.exportando h3,
+body.exportando p {
+    color: black !important;
+}
+
+/* =========================================================
+   IMPRESSÃO
+========================================================= */
+@media print {
+    body {
+        background: white;
+    }
+
+    .item-compra {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+@keyframes slideFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
 @media (max-width: 768px) {
     .hero-body {
         padding: 1.2rem;
@@ -314,4 +311,12 @@ body.dark .hero-body {
     .top-buttons button {
         width: 100%;
     }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+    margin-top: 1rem;
+    font-family: 'Mansalva';
 }
