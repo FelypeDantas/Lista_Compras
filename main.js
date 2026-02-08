@@ -143,28 +143,29 @@ if (localStorage.getItem("modoEscuro") === "true") {
     document.body.classList.add("dark");
 }
 
-document.getElementById("exportar-pdf").addEventListener("click", () => {
+document.getElementById("exportar-pdf").addEventListener("click", async () => {
+    document.body.classList.add("exportando");
+
     const areaPDF = document.getElementById("area-pdf");
 
-    const header = document.createElement("div");
-    header.style.textAlign = "center";
-    header.style.marginBottom = "20px";
-    header.innerHTML = `
-        <strong>Lista de Compras</strong><br>
-        <small>${new Date().toLocaleDateString()}</small>
-        <hr>
-    `;
-
-    const clone = areaPDF.cloneNode(true);
-    clone.prepend(header);
-
-    html2pdf().from(clone).set({
+    await html2pdf().from(areaPDF).set({
         margin: 10,
         filename: "lista-de-compras.pdf",
-        html2canvas: { scale: 2 },
-        jsPDF: { orientation: "portrait", unit: "mm", format: "a4" }
+        html2canvas: {
+            scale: 2,
+            backgroundColor: "#ffffff",
+            useCORS: true
+        },
+        jsPDF: {
+            orientation: "portrait",
+            unit: "mm",
+            format: "a4"
+        }
     }).save();
+
+    document.body.classList.remove("exportando");
 });
+
 
 window.addEventListener("load", () => {
     setTimeout(() => {
