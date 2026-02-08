@@ -158,6 +158,11 @@ body.exportando {
     background: white !important;
 }
 
+body.exportando .pdf-wrapper {
+    background: white !important;
+    padding: 0 !important;
+}
+
 body.exportando .hero-body,
 body.exportando .container,
 body.exportando .column {
