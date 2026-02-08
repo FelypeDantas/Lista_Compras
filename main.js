@@ -162,22 +162,20 @@ document.getElementById("exportar-pdf").addEventListener("click", async () => {
 
     clone.prepend(header);
 
-    /* ===== RODAPÉ COM TOTAIS ===== */
+    /* ===== RODAPÉ ===== */
     const setores = {};
-
     listaDeCompras.forEach(item => {
-        if (!setores[item.setor]) setores[item.setor] = 0;
-        setores[item.setor]++;
+        setores[item.setor] = (setores[item.setor] || 0) + 1;
     });
 
     const footer = document.createElement("div");
-    footer.style.marginTop = "20px";
+    footer.style.marginTop = "24px";
     footer.innerHTML = `
         <hr>
         <strong>Total por setor:</strong>
         <ul>
             ${Object.entries(setores)
-                .map(([setor, total]) => `<li>${setor}: ${total} item(ns)</li>`)
+                .map(([s, t]) => `<li>${s}: ${t} item(ns)</li>`)
                 .join("")}
         </ul>
 
@@ -189,9 +187,6 @@ document.getElementById("exportar-pdf").addEventListener("click", async () => {
 
     clone.appendChild(footer);
 
-    /* ===== CONFIGURAÇÃO DO PDF ===== */
-    const FORMATO = "a4"; // troque para "a5" quando quiser
-
     await html2pdf().from(clone).set({
         margin: 12,
         filename: "lista-de-compras.pdf",
@@ -202,7 +197,7 @@ document.getElementById("exportar-pdf").addEventListener("click", async () => {
         jsPDF: {
             orientation: "portrait",
             unit: "mm",
-            format: FORMATO
+            format: "a4"
         }
     }).save();
 
