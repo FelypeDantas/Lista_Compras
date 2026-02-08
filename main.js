@@ -144,26 +144,27 @@ if (localStorage.getItem("modoEscuro") === "true") {
 }
 
 document.getElementById("exportar-pdf").addEventListener("click", () => {
-    const clone = document.querySelector(".hero-body").cloneNode(true);
+    const areaPDF = document.getElementById("area-pdf");
 
     const header = document.createElement("div");
+    header.style.textAlign = "center";
+    header.style.marginBottom = "20px";
     header.innerHTML = `
-        <div style="text-align:center; margin-bottom:20px;">
-            <img src="assets/OIP.jpg" style="width:80px;"><br>
-            <strong>Lista de Compras</strong><br>
-            <small>${new Date().toLocaleDateString()}</small>
-        </div>
+        <strong>Lista de Compras</strong><br>
+        <small>${new Date().toLocaleDateString()}</small>
+        <hr>
     `;
 
+    const clone = areaPDF.cloneNode(true);
     clone.prepend(header);
 
     html2pdf().from(clone).set({
         margin: 10,
         filename: "lista-de-compras.pdf",
-        html2canvas: { scale: 2 }
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: "portrait", unit: "mm", format: "a4" }
     }).save();
 });
-
 
 window.addEventListener("load", () => {
     setTimeout(() => {
