@@ -174,21 +174,14 @@ body.exportando .no-pdf {
     display: none !important;
 }
 
-body.exportando h2 {
-    color: black !important;
-}
-
 body.exportando span,
-body.exportando li {
+body.exportando li,
+body.exportando h2 {
     color: black !important;
 }
 
 body.exportando {
     background: white !important;
-}
-
-body.exportando * {
-    color: black !important;
 }
 
 /* ===== Impressão ===== */
