@@ -147,19 +147,62 @@ document.getElementById("exportar-pdf").addEventListener("click", async () => {
     document.body.classList.add("exportando");
 
     const areaPDF = document.getElementById("area-pdf");
+    const clone = areaPDF.cloneNode(true);
 
-    await html2pdf().from(areaPDF).set({
-        margin: 10,
+    /* ===== CABEÇALHO ===== */
+    const header = document.createElement("div");
+    header.style.textAlign = "center";
+    header.style.marginBottom = "16px";
+    header.innerHTML = `
+        <img src="assets/logo.png" style="width:70px; margin-bottom:6px;">
+        <h2 style="margin:0;">Lista de Compras</h2>
+        <small>${new Date().toLocaleDateString("pt-BR")}</small>
+        <hr>
+    `;
+
+    clone.prepend(header);
+
+    /* ===== RODAPÉ COM TOTAIS ===== */
+    const setores = {};
+
+    listaDeCompras.forEach(item => {
+        if (!setores[item.setor]) setores[item.setor] = 0;
+        setores[item.setor]++;
+    });
+
+    const footer = document.createElement("div");
+    footer.style.marginTop = "20px";
+    footer.innerHTML = `
+        <hr>
+        <strong>Total por setor:</strong>
+        <ul>
+            ${Object.entries(setores)
+                .map(([setor, total]) => `<li>${setor}: ${total} item(ns)</li>`)
+                .join("")}
+        </ul>
+
+        <div style="margin-top:40px; text-align:center;">
+            _______________________________<br>
+            <small>Assinatura</small>
+        </div>
+    `;
+
+    clone.appendChild(footer);
+
+    /* ===== CONFIGURAÇÃO DO PDF ===== */
+    const FORMATO = "a4"; // troque para "a5" quando quiser
+
+    await html2pdf().from(clone).set({
+        margin: 12,
         filename: "lista-de-compras.pdf",
         html2canvas: {
             scale: 2,
-            backgroundColor: "#ffffff",
-            useCORS: true
+            backgroundColor: "#ffffff"
         },
         jsPDF: {
             orientation: "portrait",
             unit: "mm",
-            format: "a4"
+            format: FORMATO
         }
     }).save();
 
