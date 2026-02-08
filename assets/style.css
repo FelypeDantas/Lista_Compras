@@ -183,6 +183,13 @@ body.exportando li {
     color: black !important;
 }
 
+body.exportando {
+    background: white !important;
+}
+
+body.exportando * {
+    color: black !important;
+}
 
 /* ===== Impressão ===== */
 @media print {
