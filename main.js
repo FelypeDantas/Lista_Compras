@@ -253,3 +253,35 @@ window.addEventListener("load", () => {
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
+
+/* ======================================================
+   INSTALAÇÃO INTELIGENTE (PWA)
+====================================================== */
+
+let deferredPrompt;
+const btnInstalar = document.getElementById("btn-instalar");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault(); // impede o prompt automático
+    deferredPrompt = e;
+
+    // mostra o botão apenas quando for possível instalar
+    btnInstalar.style.display = "inline-flex";
+});
+
+btnInstalar.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+        console.log("Usuário instalou o app 🎉");
+    } else {
+        console.log("Usuário recusou a instalação");
+    }
+
+    deferredPrompt = null;
+    btnInstalar.style.display = "none";
+});
