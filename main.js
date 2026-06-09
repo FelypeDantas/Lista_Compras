@@ -57,6 +57,41 @@ form.addEventListener("submit", (e) => {
 });
 
 /* ======================================================
+   Funções especiais
+====================================================== */
+
+function atualizarDashboard() {
+
+    const total = listaDeCompras.length;
+
+    const comprados = listaDeCompras.filter(
+        item => item.checar
+    ).length;
+
+    const pendentes = total - comprados;
+
+    const percentual =
+        total === 0
+            ? 0
+            : Math.round((comprados / total) * 100);
+
+    document.getElementById("total-itens").textContent =
+        total;
+
+    document.getElementById("itens-comprados-count").textContent =
+        comprados;
+
+    document.getElementById("itens-pendentes").textContent =
+        pendentes;
+
+    document.getElementById("percentual").textContent =
+        `${percentual}%`;
+
+    document.getElementById("barra-progresso").style.width =
+        `${percentual}%`;
+}
+
+/* ======================================================
    RENDERIZAÇÃO
 ====================================================== */
 function mostrarItem() {
@@ -95,6 +130,7 @@ function mostrarItem() {
 
     bindEventos();
     atualizaLocalStorage();
+    atualizarDashboard()
 }
 
 /* ======================================================
