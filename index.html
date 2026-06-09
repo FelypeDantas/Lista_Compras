@@ -5,80 +5,281 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de compras</title>
+
+    <title>Minha Lista de Compras</title>
+
     <link rel="shortcut icon" href="assets/OIP.jpg" type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:ital,wght@0,300;1,200&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <link rel="manifest" href="manifest.json">
+
     <meta name="theme-color" content="#4f46e5">
 </head>
 
-<body class="has-text-grey hero is-fullheight">
+<body>
 
-    <main class="hero-body is-unselectable">
-        <div class="container is-flex is-justify-content-center is-align-items-center">
-            <div class="column is-7">
+    <main class="app-container">
 
-                <div class="top-buttons no-pdf">
-                    <button id="toggle-dark" class="button is-small is-dark">
-                        🌙 Modo escuro
-                    </button>
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8-desktop is-10-tablet">
 
-                    <button id="exportar-pdf" class="button is-link is-small">
-                        💾 Exportar PDF
-                    </button>
+                    <!-- CARD PRINCIPAL -->
+                    <section class="app-shell">
 
-                    <button id="modo-mercado" class="button is-warning is-small">
-                        🛒 Modo mercado
-                    </button>
+                        <!-- HEADER -->
+                        <header class="app-header">
 
-                    <button id="btn-instalar" class="button is-success is-small" style="display:none">
-                        📲 Instalar app
-                    </button>
-                </div>
+                            <div>
+                                <h1 class="app-title">
+                                    🛒 Minha Lista
+                                </h1>
 
+                                <p class="app-subtitle">
+                                    Organize suas compras de forma inteligente
+                                </p>
+                            </div>
 
-                <form id="form-itens" class="has-text-centered no-pdf">
-                    <select id="setor-item" class="select has-text-centered">
-                        <option value="">Selecione um setor</option>
-                        <option value="Alimentos">Alimentos</option>
-                        <option value="Limpeza">Limpeza</option>
-                        <option value="Bebidas">Bebidas</option>
-                    </select>
-                    <input type="text" class="input has-text-centered" required
-                        placeholder="Digite o item que deseja adicionar" id="receber-item">
-                    <button for="salvar" type="submit"
-                        class="mt-2 has-text-weight-bold button is-small is-primary">Salvar
-                        item</button>
-                </form>
+                            <div class="header-actions">
 
-                <div class="has-background-white mt-4">
-                    <div class="pdf-wrapper">
-                        <div id="area-pdf">
-                            <ul class="mx-2 borda-lista" id="lista-de-itens"></ul>
-                        </div>
-                    </div>
+                                <button id="toggle-dark"
+                                    class="button is-dark is-small">
+                                    <i class="fa-solid fa-moon mr-2"></i>
+                                    Tema
+                                </button>
 
-                    <section class="pb-2 no-pdf">
-                        <h2 class="has-text-link has-text-weight-bold is-size-4 ml-2">Comprados</h2>
-                        <ul class="mx-2 borda-lista" id="itens-comprados">
-                        </ul>
+                                <button id="exportar-pdf"
+                                    class="button is-link is-small">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i>
+                                    PDF
+                                </button>
+
+                                <button id="modo-mercado"
+                                    class="button is-warning is-small">
+                                    <i class="fa-solid fa-cart-shopping mr-2"></i>
+                                    Mercado
+                                </button>
+
+                                <button id="btn-instalar"
+                                    class="button is-success is-small"
+                                    style="display:none">
+                                    <i class="fa-solid fa-mobile-screen mr-2"></i>
+                                    Instalar
+                                </button>
+
+                            </div>
+
+                        </header>
+
+                        <!-- DASHBOARD -->
+                        <section class="dashboard no-pdf">
+
+                            <div class="stat-card">
+                                <span>Total</span>
+                                <strong id="total-itens">0</strong>
+                            </div>
+
+                            <div class="stat-card">
+                                <span>Pendentes</span>
+                                <strong id="pendentes">0</strong>
+                            </div>
+
+                            <div class="stat-card">
+                                <span>Comprados</span>
+                                <strong id="comprados">0</strong>
+                            </div>
+
+                        </section>
+
+                        <!-- PROGRESSO -->
+                        <section class="progresso-wrapper no-pdf">
+
+                            <div class="is-flex is-justify-content-space-between mb-2">
+                                <span>Progresso das compras</span>
+                                <span id="texto-progresso">0%</span>
+                            </div>
+
+                            <div class="barra">
+                                <div id="barra-progresso"></div>
+                            </div>
+
+                        </section>
+
+                        <!-- BUSCA -->
+                        <section class="mb-5 no-pdf">
+
+                            <div class="field">
+                                <div class="control has-icons-left">
+
+                                    <input
+                                        id="buscar-item"
+                                        class="input"
+                                        type="text"
+                                        placeholder="Pesquisar item...">
+
+                                    <span class="icon is-left">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <!-- FORMULÁRIO -->
+                        <form id="form-itens"
+                            class="form-card no-pdf">
+
+                            <div class="columns is-mobile">
+
+                                <div class="column is-4">
+
+                                    <div class="select is-fullwidth">
+
+                                        <select id="setor-item">
+
+                                            <option value="">
+                                                Setor
+                                            </option>
+
+                                            <option value="Alimentos">
+                                                🍎 Alimentos
+                                            </option>
+
+                                            <option value="Limpeza">
+                                                🧽 Limpeza
+                                            </option>
+
+                                            <option value="Bebidas">
+                                                ☕ Bebidas
+                                            </option>
+
+                                            <option value="Higiene">
+                                                🧴 Higiene
+                                            </option>
+
+                                            <option value="Padaria">
+                                                🥖 Padaria
+                                            </option>
+
+                                            <option value="Açougue">
+                                                🥩 Açougue
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="column">
+
+                                    <input
+                                        type="text"
+                                        class="input"
+                                        required
+                                        id="receber-item"
+                                        placeholder="Digite um item">
+
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="button is-primary is-fullwidth">
+
+                                <i class="fa-solid fa-plus mr-2"></i>
+                                Adicionar Item
+
+                            </button>
+
+                        </form>
+
+                        <!-- LISTA PRINCIPAL -->
+                        <section class="lista-section">
+
+                            <div class="section-header">
+
+                                <h2>
+                                    📋 Lista de Compras
+                                </h2>
+
+                            </div>
+
+                            <div id="area-pdf">
+
+                                <ul
+                                    id="lista-de-itens"
+                                    class="lista-compras">
+                                </ul>
+
+                            </div>
+
+                        </section>
+
+                        <!-- COMPRADOS -->
+                        <section
+                            class="comprados-section no-pdf">
+
+                            <div class="section-header">
+
+                                <h2>
+                                    ✅ Comprados
+                                </h2>
+
+                            </div>
+
+                            <ul
+                                id="itens-comprados"
+                                class="lista-compras">
+                            </ul>
+
+                        </section>
+
+                        <!-- FOOTER -->
+                        <footer class="app-footer no-pdf">
+
+                            <p>
+                                Desenvolvido por Felype
+                            </p>
+
+                        </footer>
+
                     </section>
 
                 </div>
-                <footer class="has-text-centered has-text-white has-text-weight-bold no-pdf">Desenvolvido por Felype.
-                </footer>
             </div>
         </div>
+
     </main>
 
+    <!-- BOTÃO FLUTUANTE -->
+    <button
+        class="fab no-pdf"
+        onclick="document.getElementById('receber-item').focus()">
+
+        <i class="fa-solid fa-plus"></i>
+
+    </button>
+
     <script src="./main.js"></script>
+
 </body>
 
 </html>
