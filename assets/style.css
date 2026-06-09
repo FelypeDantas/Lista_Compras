@@ -1,274 +1,524 @@
 /* =========================================================
-   BASE
+   VARIÁVEIS
 ========================================================= */
+
+:root {
+
+    --primary: #4f46e5;
+    --primary-light: #6366f1;
+
+    --success: #10b981;
+    --warning: #f59e0b;
+
+    --bg: #f4f7fb;
+    --card: rgba(255, 255, 255, 0.85);
+
+    --text: #111827;
+    --text-light: #6b7280;
+
+    --border: #e5e7eb;
+
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, .05);
+    --shadow-md: 0 12px 30px rgba(0, 0, 0, .08);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, .12);
+
+    --radius: 18px;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark {
+
+    --bg: #020617;
+    --card: rgba(15, 23, 42, .92);
+
+    --text: #f8fafc;
+    --text-light: #94a3b8;
+
+    --border: #1e293b;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
-    background: linear-gradient(135deg, #4f46e5, #059669);
     min-height: 100%;
 }
 
 body {
+
+    min-height: 100vh;
+
     font-family: 'Montserrat', sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #0ea5e9,
+            #10b981
+        );
+
+    color: var(--text);
+
+    transition: .3s;
 }
 
 /* =========================================================
-   HERO / CARD PRINCIPAL (UNIFICADO)
+   CONTAINER
 ========================================================= */
-.hero-body {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 22px;
-    padding: 2rem;
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, 0.25),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4);
-    animation: appEnter 0.6s ease forwards;
-}
 
-/* =========================================================
-   TÍTULOS
-========================================================= */
-h2 {
-    font-family: 'Mansalva';
-    letter-spacing: 1px;
-}
+.app-container {
 
-/* =========================================================
-   FORMULÁRIO
-========================================================= */
-#form-itens {
+    padding: 2rem 1rem;
+
+    min-height: 100vh;
+
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-input,
-select {
-    border-radius: 12px;
-    padding: 0.4rem;
-    border: 1px solid #d1d5db;
-    transition: 0.3s;
-}
-
-input:focus,
-select:focus {
-    outline: none;
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-    transform: scale(1.03);
-}
-
-/* =========================================================
-   BOTÕES
-========================================================= */
-button {
-    border-radius: 12px;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-/* =========================================================
-   BOTÕES DO TOPO
-========================================================= */
-.top-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-/* =========================================================
-   LISTA
-========================================================= */
-.borda-lista {
-    border: none;
-    margin-top: 0.5rem;
-}
-
-/* =========================================================
-   ITEM DE COMPRA (UNIFICADO)
-========================================================= */
-.item-compra {
-    background: #f9fafb;
-    border-radius: 14px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
     align-items: center;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    animation: slideFade 0.35s ease forwards;
+}
+
+.app-shell {
+
+    background: var(--card);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 28px;
+
+    padding: 2rem;
+
+    box-shadow: var(--shadow-lg);
+
+    animation: appEnter .5s ease;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.app-header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.app-title {
+
+    font-size: 2rem;
+    font-weight: 800;
+
+    color: var(--text);
+}
+
+.app-subtitle {
+
+    color: var(--text-light);
+    margin-top: .3rem;
+}
+
+.header-actions {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+
+    background: rgba(255,255,255,.6);
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    border-radius: var(--radius);
+
+    padding: 1rem;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-sm);
+}
+
+body.dark .stat-card {
+
+    background: rgba(15,23,42,.7);
+}
+
+.stat-card span {
+
+    display: block;
+
+    color: var(--text-light);
+
+    margin-bottom: .4rem;
+}
+
+.stat-card strong {
+
+    font-size: 2rem;
+
+    color: var(--primary);
+}
+
+/* =========================================================
+   PROGRESSO
+========================================================= */
+
+.progresso-wrapper {
+
+    margin-bottom: 1.5rem;
+}
+
+.barra {
+
+    height: 12px;
+
+    border-radius: 999px;
+
+    background: #dbe4ee;
+
+    overflow: hidden;
+}
+
+#barra-progresso {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #06b6d4
+        );
+
+    transition: .4s;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-card {
+
+    background: rgba(255,255,255,.5);
+
+    padding: 1rem;
+
+    border-radius: var(--radius);
+
+    margin-bottom: 2rem;
+}
+
+body.dark .form-card {
+
+    background: rgba(15,23,42,.5);
+}
+
+.input,
+.select select {
+
+    border-radius: 12px !important;
+
+    border: 1px solid var(--border);
+
+    transition: .3s;
+}
+
+.input:focus,
+.select select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(79,70,229,.15) !important;
+}
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+.section-header {
+
+    margin-bottom: 1rem;
+}
+
+.section-header h2 {
+
+    font-family: 'Mansalva';
+
+    font-size: 1.6rem;
+
+    color: var(--text);
+}
+
+/* =========================================================
+   LISTAS
+========================================================= */
+
+.lista-compras {
+
+    list-style: none;
+}
+
+.item-compra {
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 1rem;
+
+    margin-bottom: .75rem;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: .25s;
+
+    animation: slideFade .3s ease;
+}
+
+body.dark .item-compra {
+
+    background: #0f172a;
 }
 
 .item-compra:hover {
+
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+    box-shadow: var(--shadow-md);
 }
 
-.item-compra span {
-    margin-left: 0.5rem;
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+input[type="checkbox"] {
+
+    width: 20px;
+    height: 20px;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
 }
 
 /* =========================================================
    COMPRADOS
 ========================================================= */
+
 .itens-comprados {
+
     text-decoration: line-through;
-    color: #9ca3af;
+
+    opacity: .6;
 }
 
 /* =========================================================
-   BADGES DE SETOR
+   BADGES
 ========================================================= */
+
 .badge {
-    padding: 0.2rem 0.6rem;
+
+    padding: .25rem .7rem;
+
     border-radius: 999px;
-    font-size: 0.75rem;
-    margin-left: 0.5rem;
-    font-weight: bold;
+
+    font-size: .75rem;
+
+    font-weight: 700;
+
+    margin-left: .6rem;
 }
 
 .badge.Alimentos {
-    background: #fde68a;
+    background: #fef3c7;
     color: #92400e;
 }
 
 .badge.Limpeza {
-    background: #bfdbfe;
-    color: #1e3a8a;
+    background: #dbeafe;
+    color: #1d4ed8;
 }
 
 .badge.Bebidas {
-    background: #bbf7d0;
-    color: #065f46;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge.Higiene {
+    background: #fce7f3;
+    color: #be185d;
+}
+
+.badge.Padaria {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.badge.Açougue {
+    background: #fee2e2;
+    color: #b91c1c;
 }
 
 /* =========================================================
    ÍCONES
 ========================================================= */
+
 i {
-    margin-left: 0.5rem;
-    transition: 0.3s;
+
+    cursor: pointer;
+
+    transition: .25s;
 }
 
 i:hover {
-    color: #4f46e5;
-    transform: scale(1.2);
+
+    color: var(--primary);
+
+    transform: scale(1.15);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.app-footer {
+
+    text-align: center;
+
+    margin-top: 2rem;
+
+    color: var(--text-light);
+
+    font-family: 'Mansalva';
+}
+
+/* =========================================================
+   FAB
+========================================================= */
+
+.fab {
+
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    box-shadow:
+        0 10px 30px rgba(79,70,229,.4);
+
+    z-index: 999;
+
+    transition: .3s;
+}
+
+.fab:hover {
+
+    transform: scale(1.1);
 }
 
 /* =========================================================
    MODO MERCADO
 ========================================================= */
-body.mercado .hero-body {
-    width: 100%;
-    max-width: 100%;
-    height: 100vh;
-    border-radius: 0;
-}
 
 body.mercado .item-compra {
-    font-size: 1.3rem;
-    padding: 1.2rem;
+
+    font-size: 1.25rem;
+
+    padding: 1.25rem;
+}
+
+body.mercado .app-shell {
+
+    max-width: 100%;
 }
 
 /* =========================================================
-   MODO ESCURO
+   PDF
 ========================================================= */
-body.dark {
-    background: linear-gradient(135deg, #020617, #020617);
-}
-
-body.dark .hero-body {
-    background: rgba(17, 24, 39, 0.85);
-    color: #e5e7eb;
-}
-
-body.dark input,
-body.dark select {
-    background: #020617;
-    color: #e5e7eb;
-    border: 1px solid #374151;
-}
-
-body.dark .item-compra {
-    background: #020617;
-}
-
-body.dark .button.is-link {
-    background-color: #2563eb;
-}
-
-body.dark .button.is-dark {
-    background-color: #111827;
-    color: white;
-}
-
-/* =========================================================
-   PDF – BLINDAGEM TOTAL
-========================================================= */
-body.exportando {
-    background: white !important;
-}
-
-body.exportando .hero-body,
-body.exportando .container,
-body.exportando .column,
-body.exportando .pdf-wrapper {
-    background: white !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-
-body.exportando #area-pdf {
-    background: white !important;
-    padding: 0 !important;
-}
-
-body.exportando .item-compra {
-    background: white !important;
-    border: 1px solid #ccc;
-    box-shadow: none !important;
-}
 
 body.exportando .no-pdf {
     display: none !important;
 }
 
-body.exportando li,
-body.exportando span,
-body.exportando h1,
-body.exportando h2,
-body.exportando h3,
-body.exportando p {
+body.exportando,
+body.exportando .app-shell {
+
+    background: white !important;
+
     color: black !important;
+
+    box-shadow: none !important;
 }
 
-/* =========================================================
-   IMPRESSÃO
-========================================================= */
-@media print {
-    body {
-        background: white;
-    }
+body.exportando .item-compra {
 
-    .item-compra {
-        box-shadow: none;
-        border: 1px solid #ddd;
-    }
+    background: white !important;
+
+    border: 1px solid #ddd;
+
+    box-shadow: none !important;
 }
 
 /* =========================================================
    ANIMAÇÕES
 ========================================================= */
+
 @keyframes slideFade {
+
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -276,47 +526,78 @@ body.exportando p {
 }
 
 @keyframes appEnter {
+
     from {
+
         opacity: 0;
-        transform: translateY(25px) scale(0.97);
+
+        transform:
+            translateY(20px)
+            scale(.98);
     }
+
     to {
+
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
 /* =========================================================
-   RESPONSIVIDADE
+   RESPONSIVO
 ========================================================= */
+
 @media (max-width: 768px) {
-    .hero-body {
-        padding: 1.2rem;
-        border-radius: 14px;
+
+    .app-shell {
+
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+
+    .app-header {
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+
+        width: 100%;
+    }
+
+    .header-actions button {
+
+        flex: 1;
+    }
+
+    .dashboard {
+
+        grid-template-columns: 1fr;
     }
 
     .item-compra {
+
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+        align-items: flex-start !important;
+
+        gap: .75rem;
     }
 }
 
 @media (max-width: 600px) {
-    .top-buttons {
-        flex-direction: column;
-        width: 100%;
+
+    .fab {
+
+        width: 56px;
+        height: 56px;
     }
 
-    .top-buttons button {
-        width: 100%;
-    }
-}
+    .app-title {
 
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-    margin-top: 1rem;
-    font-family: 'Mansalva';
+        font-size: 1.6rem;
+    }
 }
