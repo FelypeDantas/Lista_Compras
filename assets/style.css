@@ -55,22 +55,24 @@ html {
 }
 
 body {
-
     min-height: 100vh;
 
-    font-family: 'Montserrat', sans-serif;
-
     background:
-        linear-gradient(
-            135deg,
-            #4f46e5,
-            #0ea5e9,
-            #10b981
-        );
+        radial-gradient(
+            circle at top left,
+            rgba(99,102,241,.45),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(16,185,129,.35),
+            transparent 35%
+        ),
+        #f3f4f6;
 
     color: var(--text);
 
-    transition: .3s;
+    overflow-x: hidden;
 }
 
 /* =========================================================
