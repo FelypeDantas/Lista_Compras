@@ -1,28 +1,37 @@
 /* =========================================================
-   VARIÁVEIS
+   DESIGN SYSTEM
 ========================================================= */
 
 :root {
 
-    --primary: #4f46e5;
-    --primary-light: #6366f1;
+    --primary: #5b5cf0;
+    --primary-hover: #494ae6;
 
     --success: #10b981;
     --warning: #f59e0b;
+    --danger: #ef4444;
 
-    --bg: #f4f7fb;
-    --card: rgba(255, 255, 255, 0.85);
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-hover: #fafbff;
 
-    --text: #111827;
-    --text-light: #6b7280;
+    --card: rgba(255,255,255,.82);
 
-    --border: #e5e7eb;
+    --text: #0f172a;
+    --text-soft: #64748b;
 
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, .05);
-    --shadow-md: 0 12px 30px rgba(0, 0, 0, .08);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, .12);
+    --border: #e2e8f0;
 
-    --radius: 18px;
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
+
+    --shadow-xs: 0 2px 8px rgba(15,23,42,.04);
+    --shadow-sm: 0 6px 18px rgba(15,23,42,.06);
+    --shadow-md: 0 12px 30px rgba(15,23,42,.08);
+    --shadow-lg: 0 24px 60px rgba(15,23,42,.12);
+
+    --transition: .25s ease;
 }
 
 /* =========================================================
@@ -32,12 +41,20 @@
 body.dark {
 
     --bg: #020617;
-    --card: rgba(15, 23, 42, .92);
+
+    --surface: #0f172a;
+    --surface-hover: #162033;
+
+    --card: rgba(15,23,42,.92);
 
     --text: #f8fafc;
-    --text-light: #94a3b8;
+    --text-soft: #94a3b8;
 
     --border: #1e293b;
+
+    --shadow-sm: 0 8px 20px rgba(0,0,0,.25);
+    --shadow-md: 0 12px 35px rgba(0,0,0,.35);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,.5);
 }
 
 /* =========================================================
@@ -50,29 +67,53 @@ body.dark {
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
 
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(99,102,241,.45),
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            rgba(16,185,129,.35),
-            transparent 35%
-        ),
-        #f3f4f6;
+    font-family: 'Montserrat', sans-serif;
 
     color: var(--text);
 
     overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(91,92,240,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(59,130,246,.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #fcfdff 0%,
+            #f4f7fb 100%
+        );
+
+    transition: .3s;
+}
+
+body.dark {
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(91,92,240,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(59,130,246,.06),
+            transparent 30%
+        ),
+        #020617;
 }
 
 /* =========================================================
@@ -81,28 +122,49 @@ body {
 
 .app-container {
 
-    padding: 2rem 1rem;
-
     min-height: 100vh;
 
     display: flex;
     align-items: center;
+
+    padding: 2rem 1rem;
 }
 
 .app-shell {
 
-    background: var(--card);
+    width: 100%;
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.92),
+            rgba(255,255,255,.82)
+        );
 
-    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,.7);
+
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+
+    border-radius: var(--radius-lg);
 
     padding: 2rem;
 
     box-shadow: var(--shadow-lg);
 
-    animation: appEnter .5s ease;
+    animation: appEnter .4s ease;
+}
+
+body.dark .app-shell {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,23,42,.95),
+            rgba(15,23,42,.90)
+        );
+
+    border: 1px solid rgba(255,255,255,.04);
 }
 
 /* =========================================================
@@ -122,23 +184,36 @@ body {
 
 .app-title {
 
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: 2.2rem;
+    font-weight: 900;
 
-    color: var(--text);
+    letter-spacing: -.04em;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b5cf0,
+            #3b82f6
+        );
+
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .app-subtitle {
 
-    color: var(--text-light);
     margin-top: .3rem;
+
+    color: var(--text-soft);
+
+    font-size: .95rem;
 }
 
 .header-actions {
 
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: .6rem;
 }
 
 /* =========================================================
@@ -149,7 +224,7 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 1rem;
 
@@ -158,29 +233,55 @@ body {
 
 .stat-card {
 
-    background: rgba(255,255,255,.6);
+    position: relative;
 
-    border: 1px solid rgba(255,255,255,.3);
+    overflow: hidden;
 
-    border-radius: var(--radius);
+    background: var(--surface);
 
-    padding: 1rem;
+    border: 1px solid var(--border);
 
-    text-align: center;
+    border-radius: var(--radius-md);
+
+    padding: 1.25rem;
+
+    box-shadow: var(--shadow-xs);
+
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+
+    transform: translateY(-3px);
 
     box-shadow: var(--shadow-sm);
 }
 
-body.dark .stat-card {
+.stat-card::before {
 
-    background: rgba(15,23,42,.7);
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5b5cf0,
+            #3b82f6
+        );
 }
 
 .stat-card span {
 
     display: block;
 
-    color: var(--text-light);
+    color: var(--text-soft);
 
     margin-bottom: .4rem;
 }
@@ -198,16 +299,16 @@ body.dark .stat-card {
 
 .progresso-wrapper {
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .barra {
 
     height: 12px;
 
-    border-radius: 999px;
+    background: #e2e8f0;
 
-    background: #dbe4ee;
+    border-radius: 999px;
 
     overflow: hidden;
 }
@@ -218,12 +319,12 @@ body.dark .stat-card {
 
     height: 100%;
 
-    border-radius: 999px;
+    border-radius: inherit;
 
     background:
         linear-gradient(
             90deg,
-            #4f46e5,
+            #5b5cf0,
             #06b6d4
         );
 
@@ -231,33 +332,39 @@ body.dark .stat-card {
 }
 
 /* =========================================================
-   FORM
+   FORMULÁRIO
 ========================================================= */
 
 .form-card {
 
     background: rgba(255,255,255,.5);
 
+    border: 1px solid rgba(255,255,255,.6);
+
     padding: 1rem;
 
-    border-radius: var(--radius);
+    border-radius: var(--radius-md);
 
     margin-bottom: 2rem;
 }
 
 body.dark .form-card {
 
-    background: rgba(15,23,42,.5);
+    background: rgba(15,23,42,.55);
 }
 
 .input,
 .select select {
 
-    border-radius: 12px !important;
+    height: 48px;
+
+    border-radius: 14px !important;
 
     border: 1px solid var(--border);
 
-    transition: .3s;
+    background: var(--surface);
+
+    transition: var(--transition);
 }
 
 .input:focus,
@@ -266,29 +373,11 @@ body.dark .form-card {
     border-color: var(--primary);
 
     box-shadow:
-        0 0 0 4px rgba(79,70,229,.15) !important;
+        0 0 0 4px rgba(91,92,240,.15) !important;
 }
 
 /* =========================================================
-   SEÇÕES
-========================================================= */
-
-.section-header {
-
-    margin-bottom: 1rem;
-}
-
-.section-header h2 {
-
-    font-family: 'Mansalva';
-
-    font-size: 1.6rem;
-
-    color: var(--text);
-}
-
-/* =========================================================
-   LISTAS
+   LISTA
 ========================================================= */
 
 .lista-compras {
@@ -298,31 +387,38 @@ body.dark .form-card {
 
 .item-compra {
 
-    background: white;
+    display: flex;
 
-    border-radius: 16px;
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
 
     padding: 1rem;
 
     margin-bottom: .75rem;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-xs);
 
-    transition: .25s;
+    transition: var(--transition);
 
-    animation: slideFade .3s ease;
-}
-
-body.dark .item-compra {
-
-    background: #0f172a;
+    animation: slideFade .25s ease;
 }
 
 .item-compra:hover {
 
     transform: translateY(-2px);
 
-    box-shadow: var(--shadow-md);
+    border-color: rgba(91,92,240,.25);
+
+    box-shadow: var(--shadow-sm);
 }
 
 /* =========================================================
@@ -331,8 +427,8 @@ body.dark .item-compra {
 
 input[type="checkbox"] {
 
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 
     accent-color: var(--primary);
 
@@ -347,7 +443,7 @@ input[type="checkbox"] {
 
     text-decoration: line-through;
 
-    opacity: .6;
+    opacity: .55;
 }
 
 /* =========================================================
@@ -356,15 +452,17 @@ input[type="checkbox"] {
 
 .badge {
 
-    padding: .25rem .7rem;
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: .35rem .75rem;
 
     border-radius: 999px;
 
-    font-size: .75rem;
+    font-size: .72rem;
 
     font-weight: 700;
-
-    margin-left: .6rem;
 }
 
 .badge.Alimentos {
@@ -405,7 +503,7 @@ i {
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: var(--transition);
 }
 
 i:hover {
@@ -413,21 +511,6 @@ i:hover {
     color: var(--primary);
 
     transform: scale(1.15);
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.app-footer {
-
-    text-align: center;
-
-    margin-top: 2rem;
-
-    color: var(--text-light);
-
-    font-family: 'Mansalva';
 }
 
 /* =========================================================
@@ -441,30 +524,52 @@ i:hover {
     right: 24px;
     bottom: 24px;
 
-    width: 60px;
-    height: 60px;
+    width: 68px;
+    height: 68px;
 
     border: none;
 
     border-radius: 50%;
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            135deg,
+            #5b5cf0,
+            #3b82f6
+        );
 
     color: white;
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 
     box-shadow:
-        0 10px 30px rgba(79,70,229,.4);
+        0 20px 40px rgba(91,92,240,.25);
+
+    transition: var(--transition);
 
     z-index: 999;
-
-    transition: .3s;
 }
 
 .fab:hover {
 
-    transform: scale(1.1);
+    transform:
+        translateY(-4px)
+        scale(1.05);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.app-footer {
+
+    margin-top: 2rem;
+
+    text-align: center;
+
+    color: var(--text-soft);
+
+    font-family: 'Mansalva';
 }
 
 /* =========================================================
@@ -475,7 +580,7 @@ body.mercado .item-compra {
 
     font-size: 1.25rem;
 
-    padding: 1.25rem;
+    padding: 1.3rem;
 }
 
 body.mercado .app-shell {
@@ -499,6 +604,8 @@ body.exportando .app-shell {
     color: black !important;
 
     box-shadow: none !important;
+
+    backdrop-filter: none !important;
 }
 
 body.exportando .item-compra {
@@ -518,7 +625,7 @@ body.exportando .item-compra {
 
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
     }
 
     to {
@@ -557,13 +664,25 @@ body.exportando .item-compra {
     .app-shell {
 
         padding: 1.25rem;
-        border-radius: 20px;
+        border-radius: 22px;
     }
 
     .app-header {
 
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .dashboard {
+
+        grid-template-columns: 1fr;
+    }
+
+    .item-compra {
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
     }
 
     .header-actions {
@@ -575,31 +694,18 @@ body.exportando .item-compra {
 
         flex: 1;
     }
-
-    .dashboard {
-
-        grid-template-columns: 1fr;
-    }
-
-    .item-compra {
-
-        flex-direction: column;
-        align-items: flex-start !important;
-
-        gap: .75rem;
-    }
 }
 
 @media (max-width: 600px) {
 
-    .fab {
-
-        width: 56px;
-        height: 56px;
-    }
-
     .app-title {
 
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+
+    .fab {
+
+        width: 58px;
+        height: 58px;
     }
 }
