@@ -57,6 +57,15 @@ body.dark {
     --shadow-lg: 0 20px 60px rgba(0,0,0,.5);
 }
 
+body.dark .input::placeholder {
+    color: var(--text-soft);
+}
+
+.select select option {
+    background: var(--surface);
+    color: var(--text);
+}
+
 /* =========================================================
    RESET
 ========================================================= */
