@@ -84,7 +84,7 @@ function atualizarDashboard() {
     document.getElementById("pendentes").textContent =
         pendentes;
 
-    document.getElementById("percentual").textContent =
+    document.getElementById("texto-progresso").textContent =
         `${percentual}%`;
 
     document.getElementById("barra-progresso").style.width =
