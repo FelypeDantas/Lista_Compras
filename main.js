@@ -78,10 +78,10 @@ function atualizarDashboard() {
     document.getElementById("total-itens").textContent =
         total;
 
-    document.getElementById("itens-comprados-count").textContent =
+    document.getElementById("comprados").textContent =
         comprados;
 
-    document.getElementById("itens-pendentes").textContent =
+    document.getElementById("pendentes").textContent =
         pendentes;
 
     document.getElementById("percentual").textContent =
