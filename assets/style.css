@@ -61,6 +61,11 @@ body.dark .input::placeholder {
     color: var(--text-soft);
 }
 
+body.dark .select select {
+    background: var(--surface);
+    color: var(--text);
+}
+
 .select select option {
     background: var(--surface);
     color: var(--text);
